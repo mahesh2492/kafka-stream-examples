@@ -12,5 +12,11 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-actor" % "2.5.2",
 
   //type safe
-  "com.typesafe" % "config" % "1.2.1"
+  "com.typesafe" % "config" % "1.2.1",
+
+  //log4j
+  "log4j" % "log4j" % "1.2.17",
+
+  //for slfj4
+  "org.slf4j" % "slf4j-simple" % "1.7.25",
 )
