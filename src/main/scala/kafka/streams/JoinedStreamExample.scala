@@ -1,5 +1,6 @@
 package kafka.streams
 
+import org.apache.kafka.streams.StreamsBuilder
 import org.apache.kafka.streams.kstream.{JoinWindows, KStream, KStreamBuilder, ValueJoiner}
 
 
@@ -13,7 +14,7 @@ class JoinedStreamExample {
     * @param secondTopic String
     * @return KStream
     */
-  def join(builder: KStreamBuilder, firstTopic: String, secondTopic: String): KStream[String, String] = {
+  def join(builder: StreamsBuilder, firstTopic: String, secondTopic: String): KStream[String, String] = {
     val firstStream: KStream[String, String] = builder.stream(firstTopic)
     val secondStream: KStream[String, String] = builder.stream(secondTopic)
 
