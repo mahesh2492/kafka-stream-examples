@@ -1,7 +1,7 @@
 package kafka.streams
 
 import org.apache.kafka.streams.StreamsBuilder
-import org.apache.kafka.streams.kstream.{JoinWindows, KStream, KStreamBuilder, ValueJoiner}
+import org.apache.kafka.streams.kstream.{JoinWindows, KStream, ValueJoiner}
 
 
 
@@ -9,7 +9,7 @@ class JoinedStreamExample {
 
   /**
     * This method whill join two kafka streams via '-'
-     * @param builder KStreamBuilder
+     * @param builder StreamsBuilder
     * @param firstTopic String
     * @param secondTopic String
     * @return KStream

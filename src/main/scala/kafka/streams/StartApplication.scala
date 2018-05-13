@@ -1,13 +1,10 @@
 package kafka.streams
 
-import java.awt.print.PrinterAbortException
 import java.util.Properties
 
 import kafka.streams.Constants._
 import org.apache.kafka.common.serialization.Serdes
-import org.apache.kafka.streams._
-import org.apache.kafka.streams.StreamsBuilder
-import org.apache.kafka.streams.kstream.Printed
+import org.apache.kafka.streams.{StreamsBuilder, _}
 
 /**
   * Starting point of application
@@ -24,9 +21,10 @@ object StartApplication extends App {
   val builder = new StreamsBuilder()
 
   val joinedStream = (new JoinedStreamExample).join(builder, firstTopic, secondTopic)
-  logger.info("Going to print joined stream to consosle")
-  joinedStream.print()
-  joinedStream.to(joinedStreamTopic) //to is method which will write joined stream to specified kafka topic
+  logger.info("Going to print joined stream to console")
+  joinedStream.foreach((key: String, value: String) => logger.info(s"Key: $key value: $value \n"))
+
+  joinedStream.to(joinedStreamTopic) //to is a method which will write joined streams to specified kafka topic
 
   private val topology = builder.build()
   val stream = new KafkaStreams(topology, properties)
